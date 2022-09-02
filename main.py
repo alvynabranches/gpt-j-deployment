@@ -9,12 +9,12 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 [torch.cuda.get_device_properties(i) for i in range(torch.cuda.device_count())] if torch.cuda.is_available() else print('cpu')
 
 model_name_or_path = "EleutherAI/gpt-j-6b"
-model_name_or_path = "./model/config.json"
+model_name_or_path = "./model/"
 tokenizer_name_or_path = "EleutherAI/gpt-j-6b"
 logger = logging.getLogger(__name__)
 
 s = perf_counter()
-model = GPTJForCausalLM.from_pretrained(model_name_or_path, from_tf=True).to(device)
+model = GPTJForCausalLM.from_pretrained(model_name_or_path).to(device)
 e = perf_counter()
 logger.info(f"Model loading completed successfully! Time taken: {e-s:.3f} seconds")
 
