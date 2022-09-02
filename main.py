@@ -14,7 +14,7 @@ tokenizer_name_or_path = "EleutherAI/gpt-j-6b"
 logger = logging.getLogger(__name__)
 
 s = perf_counter()
-model = GPTJForCausalLM.from_pretrained(model_name_or_path).to(device)
+model = GPTJForCausalLM.from_pretrained(model_name_or_path, from_tf=True).to(device)
 e = perf_counter()
 logger.info(f"Model loading completed successfully! Time taken: {e-s:.3f} seconds")
 
