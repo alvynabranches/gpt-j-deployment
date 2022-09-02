@@ -9,7 +9,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 [torch.cuda.get_device_properties(i) for i in range(torch.cuda.device_count())] if torch.cuda.is_available() else print('cpu')
 
 model_name_or_path = "EleutherAI/gpt-j-6b"
-model_name_or_path = "./model/"
+model_name_or_path = "./model/pytorch_model.bin"
 tokenizer_name_or_path = "EleutherAI/gpt-j-6b"
 logger = logging.getLogger(__name__)
 
