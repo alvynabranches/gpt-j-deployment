@@ -5,7 +5,8 @@ RUN python3 -m pip install torch torchvision torchaudio transformers flask --no-
 RUN python3 -c 'from transformers import GPTJForCausalLM, AutoTokenizer; GPTJForCausalLM.from_pretrained("EleutherAI/gpt-j-6B"); AutoTokenizer.from_pretrained("EleutherAI/gpt-j-6B")'
 
 WORKDIR /app
-COPY . .
+COPY model/ model/
+COPY main.py main.py
 
 ENV HOST "0.0.0.0"
 ENV PORT 5000
