@@ -6,3 +6,5 @@
 
 sudo docker image build -t jaxdeploy .
 sudo docker container run --name jd -d jaxdeploy
+
+sudo watch -n 1 docker container logs jd
