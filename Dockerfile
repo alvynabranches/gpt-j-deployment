@@ -1,7 +1,7 @@
 FROM python:3.10
 
 RUN python3 -m pip install torch torchvision torchaudio transformers flask --no-warn-script-location
-RUN python3 -c 'from transformers import GPTNeoXForCausalLM, GPTNeoXTokenizerFast; GPTNeoXForCausalLM.from_pretrained("EleutherAI/gpt-neox-20b"); GPTNeoXTokenizerFast.from_pretrained("EleutherAI/gpt-neox-20b")'
+RUN python3 -c 'from transformers import GPTJForCausalLM, AutoTokenizer; GPTJForCausalLM.from_pretrained("EleutherAI/gpt-j-6b"); AutoTokenizer.from_pretrained("EleutherAI/gpt-j-6b")'
 
 WORKDIR /app
 COPY . .
