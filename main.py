@@ -12,12 +12,12 @@ logger.info(f"Using device {device}")
 print(f"Using device {device}")
 [print(torch.cuda.get_device_properties(i)) for i in range(torch.cuda.device_count())] if torch.cuda.is_available() else print('cpu')
 
-model_name_or_path = "EleutherAI/gpt-j-6b"
+model_name_or_path = "EleutherAI/gpt-j-6B"
 model_name_or_path = "./model/"
-tokenizer_name_or_path = "EleutherAI/gpt-j-6b"
+tokenizer_name_or_path = "EleutherAI/gpt-j-6B"
 
 s = perf_counter()
-model = GPTJForCausalLM.from_pretrained(model_name_or_path, auth_token=os.getenv("TOKEN", True)).to(device)
+model = GPTJForCausalLM.from_pretrained(model_name_or_path).to(device)
 e = perf_counter()
 logger.info(f"Model loading completed successfully! Time taken: {e-s:.3f} seconds")
 print(f"Model loading completed successfully! Time taken: {e-s:.3f} seconds")
