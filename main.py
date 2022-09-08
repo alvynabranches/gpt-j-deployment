@@ -24,6 +24,7 @@ tokenizer = AutoTokenizer.from_pretrained(tokenizer_name_or_path)
 e  = perf_counter()
 logger.info(f"Tokenizer loading completed successfully! Time taken: {e-s:.3f} seconds")
 
+
 def inference(
         prompt: str, model: GPTJForCausalLM, tokenizer: AutoTokenizer, 
         do_sample: bool = True, num_beam: int = None, temperature: float = 0.9, 
@@ -45,11 +46,21 @@ def inference(
     return tokenizer.batch_decode(gen_tokens)
 
 app = Flask(__name__)
-@app.route("/", methods=["GET"])
-def index():
-    logger.info(f"Status checked at {datetime.now()}")
-    print(f"Status checked at {datetime.now()}")
+
+
+# @app.route("/", methods=["GET"])
+# def index():
+#     logger.info(f"Status checked at {datetime.now()}")
+#     print(f"Status checked at {datetime.now()}")
+#     return jsonify({"status": "ok"}), 200
+
+
+@app.route("/qna", methods=["GET"])
+def qna():
+    logger.info(f"Status qna at {datetime.now()}")
+    print(f"Status qna at {datetime.now()}")
     return jsonify({"status": "ok"}), 200
+
 
 @app.route("/generate", methods=["POST"])
 async def generate():
@@ -60,6 +71,7 @@ async def generate():
         return jsonify({"status": "ok", "message": messages[0]}), 201
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
+
 
 if __name__ == "__main__":
     # messages = inference("Who is Sachin Tendulkar and MS Dhoni?", model, tokenizer)
