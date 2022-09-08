@@ -37,7 +37,7 @@ def inference(
     s = perf_counter()
     input_ids = tokenizer(prompt, return_tensors="pt").input_ids
     gen_tokens = model.generate(
-        str(input_ids),
+        input_ids,
         do_sample=do_sample,
         temperature=temperature,
         max_length=max_length,
