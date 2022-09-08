@@ -7,7 +7,7 @@ from flask import Flask, request, jsonify
 from transformers import GPTJForCausalLM, AutoTokenizer
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-[torch.cuda.get_device_properties(i) for i in range(torch.cuda.device_count())] if torch.cuda.is_available() else print('cpu')
+[print(torch.cuda.get_device_properties(i)) for i in range(torch.cuda.device_count())] if torch.cuda.is_available() else print('cpu')
 
 model_name_or_path = "EleutherAI/gpt-j-6b"
 model_name_or_path = "./model/"
@@ -18,11 +18,13 @@ s = perf_counter()
 model = GPTJForCausalLM.from_pretrained(model_name_or_path).to(device)
 e = perf_counter()
 logger.info(f"Model loading completed successfully! Time taken: {e-s:.3f} seconds")
+print(f"Model loading completed successfully! Time taken: {e-s:.3f} seconds")
 
 s = perf_counter()
 tokenizer = AutoTokenizer.from_pretrained(tokenizer_name_or_path)
 e  = perf_counter()
 logger.info(f"Tokenizer loading completed successfully! Time taken: {e-s:.3f} seconds")
+print(f"Tokenizer loading completed successfully! Time taken: {e-s:.3f} seconds")
 
 
 def inference(
