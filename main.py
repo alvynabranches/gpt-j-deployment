@@ -62,8 +62,8 @@ app = Flask(__name__)
 
 @app.route("/qna", methods=["GET"])
 def qna():
-    logger.info(f"Status qna at {datetime.now()}")
-    print(f"Status qna at {datetime.now()}")
+    logger.info(f"Status of qna checked at {datetime.now()}")
+    print(f"Status of qna checked at {datetime.now()}")
     return jsonify({"status": "ok"}), 200
 
 
