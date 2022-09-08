@@ -1,6 +1,7 @@
 import os
 import torch
 import logging
+from datetime import datetime
 from time import perf_counter
 from flask import Flask, request, jsonify
 from transformers import GPTJForCausalLM, AutoTokenizer
@@ -25,7 +26,8 @@ logger.info(f"Tokenizer loading completed successfully! Time taken: {e-s:.3f} se
 
 def inference(
         prompt: str, model: GPTJForCausalLM, tokenizer: AutoTokenizer, 
-        do_sample: bool = True, temperature: float = 0.9, max_length: int = 128
+        do_sample: bool = True, num_beam: int = None, temperature: float = 0.9, 
+        top_k: int = None, top_p: int = None, max_length: int = 128
     ) -> list:
     s = perf_counter()
     input_ids = tokenizer(prompt, return_tensors="pt").input_ids
@@ -34,17 +36,23 @@ def inference(
         do_sample=do_sample,
         temperature=temperature,
         max_length=max_length,
+        top_p=top_p,
+        top_k=top_k,
     )
     e = perf_counter()
+    print(f"Time taken {e-s} seconds")
+    logger.info(f"Time taken {e-s} seconds")
     return tokenizer.batch_decode(gen_tokens)
 
 app = Flask(__name__)
 @app.route("/", methods=["GET"])
 def index():
+    logger.info(f"Status checked at {datetime.now()}")
+    print(f"Status checked at {datetime.now()}")
     return jsonify({"status": "ok"}), 200
 
-@app.route("/predict", methods=["POST"])
-async def predict():
+@app.route("/generate", methods=["POST"])
+async def generate():
     try:
         if "prompt" not in request.data:
             return jsonify({"status": "error", "message": "'prompt' not in json data"})
