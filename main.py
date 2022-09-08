@@ -31,7 +31,7 @@ print(f"Tokenizer loading completed successfully! Time taken: {e-s:.3f} seconds"
 
 def inference(
         prompt: str, model: GPTJForCausalLM, tokenizer: AutoTokenizer, 
-        do_sample: bool = True, num_beam: int = None, temperature: float = 0.9, 
+        do_sample: bool = True, num_beam: int = None, temperature: float = None, 
         top_k: int = None, top_p: int = None, max_length: int = 128
     ) -> list:
     s = perf_counter()
@@ -39,6 +39,7 @@ def inference(
     gen_tokens = model.generate(
         input_ids,
         do_sample=do_sample,
+        num_beam=num_beam,
         temperature=temperature,
         max_length=max_length,
         top_p=top_p,
@@ -69,15 +70,23 @@ def qna():
 @app.route("/generate", methods=["POST"])
 async def generate():
     try:
-        if "prompt" not in request.data:
+        data = request.get_json(silent=True)
+        if "prompt" not in data:
             return jsonify({"status": "error", "message": "'prompt' not in json data"})
-        messages = inference(request.data["prompt"], model, tokenizer, max_length=512)
+        num_beam = int(data["num_beam"]) if "num_beam" in data else None
+        temperature = float(data["temperature"]) if "temperature" in data else None
+        top_k = int(data["top_k"]) if "top_k" in data else None
+        top_p = float(data["top_p"]) if "top_p" in data else None
+        max_length = int(data["max_length"]) if "max_length" in data else 512
+        messages = inference(
+            str(data["prompt"]), model, tokenizer, max_length=max_length, 
+            temperature=temperature, top_k=top_k, top_p=top_p, num_beam=num_beam
+        )
         return jsonify({"status": "ok", "message": messages[0]}), 201
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
 
 if __name__ == "__main__":
-    # messages = inference("Who is Sachin Tendulkar and MS Dhoni?", model, tokenizer)
-    # print(messages)
+    # Who is Sachin Tendulkar and MS Dhoni?
     app.run(port=os.environ.get("PORT"), debug=os.environ.get("DEBUG") == "true")
