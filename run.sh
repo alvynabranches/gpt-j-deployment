@@ -5,6 +5,6 @@ gsutil -m cp \
   model/.
 
 sudo nvidia-docker image build -t jaxdeploy .
-sudo nvidia-docker container run --name jd -d --rm -p 5000:5000 jaxdeploy
+sudo nvidia-docker container run --name jd -d  -p 5000:5000 jaxdeploy
 
 sudo watch -n 1 nvidia-docker container logs jd
