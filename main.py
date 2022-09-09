@@ -53,11 +53,11 @@ def inference(
 app = Flask(__name__)
 
 
-# @app.route("/", methods=["GET"])
-# def index():
-#     logger.info(f"Status checked at {datetime.now()}")
-#     print(f"Status checked at {datetime.now()}")
-#     return jsonify({"status": "ok"}), 200
+@app.route("/", methods=["GET"])
+def index():
+    logger.info(f"[qna] Status checked at {datetime.now()}")
+    print(f"[qna] Status checked at {datetime.now()}")
+    return jsonify({"status": "ok"}), 200
 
 
 @app.route("/qna", methods=["GET"])
