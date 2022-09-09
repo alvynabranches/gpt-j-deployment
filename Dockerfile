@@ -12,7 +12,7 @@ RUN python3 -c 'from transformers import AutoTokenizer; AutoTokenizer.from_pretr
 
 WORKDIR /app
 COPY model/ model/
-COPY main.py main.py
+COPY ltm.py main.py
 
 ENV HOST 0.0.0.0
 ENV PORT 5000

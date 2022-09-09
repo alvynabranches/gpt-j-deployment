@@ -55,15 +55,15 @@ app = Flask(__name__)
 
 @app.route("/", methods=["GET"])
 def index():
-    logger.info(f"[qna] Status checked at {datetime.now()}")
-    print(f"[qna] Status checked at {datetime.now()}")
+    logger.info(f"[ltm] Status checked at {datetime.now()}")
+    print(f"[ltm] Status checked at {datetime.now()}")
     return jsonify({"status": "ok"}), 200
 
 
-@app.route("/qna", methods=["GET"])
-def qna():
-    logger.info(f"Status of qna checked at {datetime.now()}")
-    print(f"Status of qna checked at {datetime.now()}")
+@app.route("/ltm", methods=["GET"])
+def ltm():
+    logger.info(f"Status of ltm checked at {datetime.now()}")
+    print(f"Status of ltm checked at {datetime.now()}")
     return jsonify({"status": "ok"}), 200
 
 
