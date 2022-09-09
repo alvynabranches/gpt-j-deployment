@@ -5,6 +5,7 @@ gsutil -m cp \
   model/.
 
 sudo docker image build -t alvynabranches/jax:ltm .
+sudo docker push alvynabranches/jax:ltm
 # sudo docker container run --name ltm -d -p 5000:5000 alvynabranches/jax:ltm
 # sudo docker container run --gpus=all --rm --name ltm -d -p 5000:5000 alvynabranches/jax:ltm
 
