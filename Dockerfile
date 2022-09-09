@@ -14,8 +14,8 @@ WORKDIR /app
 COPY model/ model/
 COPY main.py main.py
 
-ENV HOST "0.0.0.0"
+ENV HOST 0.0.0.0
 ENV PORT 5000
 ENV DEBUG "true"
 
-CMD [ "python3", "main.py"]
+CMD [ "python3", "main.py" ]
