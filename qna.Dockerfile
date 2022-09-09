@@ -11,7 +11,7 @@ RUN python3 -m pip install torch torchvision torchaudio transformers flask --ext
 RUN python3 -c 'from transformers import AutoTokenizer; AutoTokenizer.from_pretrained("EleutherAI/gpt-j-6B")'
 
 WORKDIR /app
-COPY model/ model/
+COPY qna_model/ model/
 COPY qna.py main.py
 
 ENV HOST 0.0.0.0
