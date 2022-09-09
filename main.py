@@ -89,4 +89,4 @@ async def generate():
 
 if __name__ == "__main__":
     # Who is Sachin Tendulkar and MS Dhoni?
-    app.run(port=os.environ.get("PORT"), debug=os.environ.get("DEBUG") == "true")
+    app.run(port=os.environ.get("PORT", "0.0.0.0"), debug=os.environ.get("DEBUG", 5000) == "true")
