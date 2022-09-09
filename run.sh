@@ -1,8 +1,8 @@
-# mkdir model
-# gsutil -m cp \
-#   "gs://gptjax_model_weights/qna_weights_slim_f16/hf_weights/config.json" \
-#   "gs://gptjax_model_weights/qna_weights_slim_f16/hf_weights/pytorch_model.bin" \
-#   model/.
+mkdir model
+gsutil -m cp \
+  "gs://gptjax_model_weights/qna_weights_slim_f16/hf_weights/config.json" \
+  "gs://gptjax_model_weights/qna_weights_slim_f16/hf_weights/pytorch_model.bin" \
+  model/.
 
 nvidia-docker image build -t alvynabranches/jax:qna .
 # nvidia-docker container run --gpus=all --name qna -d -p 5000:5000 alvynabranches/jax:qna
