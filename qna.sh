@@ -1,8 +1,8 @@
-mkdir model
+mkdir qna_model
 gsutil -m cp \
   "gs://gptjax_model_weights/qna_weights_slim_f16/hf_weights/config.json" \
   "gs://gptjax_model_weights/qna_weights_slim_f16/hf_weights/pytorch_model.bin" \
-  model/.
+  qna_model/.
 
 sudo docker image build -t alvynabranches/jax:qna -f qna.Dockerfile .
 sudo docker push alvynabranches/jax:qna
