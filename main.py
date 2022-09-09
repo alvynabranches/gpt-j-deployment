@@ -68,7 +68,7 @@ def qna():
 
 
 @app.route("/generate", methods=["POST"])
-async def generate():
+def generate():
     try:
         data = request.get_json(silent=True)
         if "prompt" not in data:
