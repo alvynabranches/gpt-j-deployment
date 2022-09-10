@@ -1,5 +1,6 @@
 import os
 import torch
+import hashlib
 import logging
 from datetime import datetime
 from time import perf_counter
@@ -69,7 +70,10 @@ def qna():
 
 @app.route("/generate", methods=["POST"])
 def generate():
+    req = hashlib.md5(str(datetime.now()))
     try:
+        logger.info(f"Started inference {req} at {datetime.now()}")
+        print(f"Started inference {req} at {datetime.now()}")
         data = request.get_json(silent=True)
         if "prompt" not in data:
             return jsonify({"status": "error", "message": "'prompt' not in json data"})
@@ -82,6 +86,8 @@ def generate():
             str(data["prompt"]), model, tokenizer, max_length=max_length, 
             temperature=temperature, top_k=top_k, top_p=top_p, num_beam=num_beam
         )
+        logger.info(f"Ended inference {req} at {datetime.now()}")
+        print(f"Ended inference {req} at {datetime.now()}")
         return jsonify({"status": "ok", "message": messages[0]}), 201
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
