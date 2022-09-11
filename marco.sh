@@ -7,7 +7,7 @@ else
   gsutil -m cp "gptjax_model_weights/ms_marco_weights_slim_f16/hf_weights/config.json" marco_model/.
 fi
 
-if [ -f "ltm_model/pytorch_model.bin" ]; then
+if [ -f "marco_model/pytorch_model.bin" ]; then
   echo "pytorch_model.bin exists"
 else
   echo "pytorch_model.bin does not exist"
