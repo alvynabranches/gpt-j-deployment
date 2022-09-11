@@ -1,6 +1,5 @@
 import os
 import torch
-import hashlib
 import logging
 from datetime import datetime
 from time import perf_counter
