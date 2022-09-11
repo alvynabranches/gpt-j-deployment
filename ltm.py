@@ -70,11 +70,10 @@ def ltm():
 
 @app.route("/generate", methods=["POST"])
 def generate():
-    req = hashlib.md5(str(datetime.now()))
     ip = request.environ.get("HTTP_X_FORWARDED_FOR", request.environ.get("REMOTE_ADDR"))
     try:
-        logger.info(f"Started inference {req} at {datetime.now()} by {ip}")
-        print(f"Started inference {req} at {datetime.now()} by {ip}")
+        logger.info(f"Started inference at {datetime.now()} by {ip}")
+        print(f"Started inference at {datetime.now()} by {ip}")
         data = request.get_json(silent=True)
         if "prompt" not in data:
             return jsonify({"status": "error", "message": "'prompt' not in json data"})
@@ -87,8 +86,8 @@ def generate():
             str(data["prompt"]), model, tokenizer, max_length=max_length, 
             temperature=temperature, top_k=top_k, top_p=top_p, num_beam=num_beam
         )
-        logger.info(f"Ended inference {req} at {datetime.now()} by {ip}")
-        print(f"Ended inference {req} at {datetime.now()} by {ip}")
+        logger.info(f"Ended inference at {datetime.now()} by {ip}")
+        print(f"Ended inference at {datetime.now()} by {ip}")
         return jsonify({"status": "ok", "message": messages[0]}), 201
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
