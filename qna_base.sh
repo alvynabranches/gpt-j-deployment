@@ -14,9 +14,5 @@ else
   gsutil -m cp "gs://gptjax_model_weights/qna_weights_slim_f16/hf_weights/pytorch_model.bin" qna_model/.
 fi
 
-sudo docker image build -t alvynabranches/jax:qna -f qna.Dockerfile .
-sudo docker push alvynabranches/jax:qna
-# sudo docker container run --name qna --rm -d -p --gpus=all 5000:5000 alvynabranches/jax:qna
-# sudo docker container run --name qna --rm -d -p 5000:5000 alvynabranches/jax:qna
-
-# watch -n 1 sudo docker container logs qna
+sudo docker image build -t gcr.io/gpt-j-and-gpt-neox20b/qna:base -f qna.Dockerfile .
+sudo docker push gcr.io/gpt-j-and-gpt-neox20b/qna:base

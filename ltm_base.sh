@@ -14,9 +14,5 @@ else
   gsutil -m cp "gs://gptjax_model_weights/msc_ltm_weights_slim_f16/hf_weights/pytorch_model.bin" ltm_model/.
 fi
 
-sudo docker image build -t alvynabranches/jax:ltm -f ltm.Dockerfile .
-sudo docker push alvynabranches/jax:ltm
-# sudo docker container run --name ltm --rm -d -p --gpus=all 5000:5000 alvynabranches/jax:ltm
-# sudo docker container run --name ltm --rm -d -p 5000:5000 alvynabranches/jax:ltm
-
-# watch -n 1 sudo docker container logs ltm
+sudo docker image build -t gcr.io/gpt-j-and-gpt-neox20b/ltm:base -f ltm.Dockerfile .
+sudo docker push gcr.io/gpt-j-and-gpt-neox20b/ltm:base

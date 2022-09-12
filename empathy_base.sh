@@ -14,9 +14,5 @@ else
   gsutil -m cp "gs://gptjax_model_weights/msc_empathy_weights_slim_f16/hf_weights/pytorch_model.bin" empathy_model/.
 fi
 
-sudo docker image build -t alvynabranches/jax:empathy -f empathy.Dockerfile .
-sudo docker push alvynabranches/jax:empathy
-# sudo docker container run --name empathy --rm -d -p --gpus=all 5000:5000 alvynabranches/jax:empathy
-# sudo docker container run --name empathy --rm -d -p 5000:5000 alvynabranches/jax:empathy
-
-# watch -n 1 sudo docker container logs empathy
+sudo docker image build -t gcr.io/gpt-j-and-gpt-neox20b/empathy:base -f empathy_base.Dockerfile .
+sudo docker push gcr.io/gpt-j-and-gpt-neox20b/empathy:base
