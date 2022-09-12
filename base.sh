@@ -1,0 +1,1 @@
+sudo docker image build -t gcr.io/gpt-j-and-gpt-neox20b/jax:base -f base.Dockerfile .
