@@ -3,11 +3,3 @@ FROM $BASE_IMG
 
 WORKDIR /app
 COPY empathy_model/ model/
-COPY empathy.py main.py
-
-ENV HOST 0.0.0.0
-ENV PORT 5000
-ENV DEBUG true
-EXPOSE 5000
-
-CMD [ "python3", "main.py" ]
