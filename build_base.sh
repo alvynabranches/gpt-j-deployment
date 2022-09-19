@@ -1,7 +1,7 @@
 git pull origin main
 # sudo docker login
 
-# source base.sh
+source base.sh
 
 source empathy_base.sh
 source ltm_base.sh
