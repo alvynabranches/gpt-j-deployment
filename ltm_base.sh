@@ -1,4 +1,5 @@
 if [ -d "ltm_model" ]; then
+  cd .
 else
   mkdir ltm_model
 fi

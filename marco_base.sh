@@ -1,4 +1,5 @@
 if [ -d "marco_model" ]; then
+  cd .
 else
   mkdir marco_model
 fi

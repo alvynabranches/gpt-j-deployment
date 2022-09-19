@@ -1,4 +1,5 @@
 if [ -d "empathy_model" ]; then
+  cd .
 else
   mkdir qna_model
 fi
