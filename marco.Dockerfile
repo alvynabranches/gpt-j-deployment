@@ -1,5 +1,4 @@
-ARG BASE_IMG=gcr.io/gpt-j-and-gpt-neox20b/marco:base
-FROM $BASE_IMG
+FROM gcr.io/gpt-j-and-gpt-neox20b/marco:base
 
 ENV DEBIAN_FRONTEND=noninteractive
 
