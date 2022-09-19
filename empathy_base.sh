@@ -11,9 +11,8 @@ else
 fi
 
 if [ -f "empathy_model/pytorch_model.bin" ]; then
-  echo "pytorch_model.bin exists"
+  cd .
 else
-  echo "pytorch_model.bin does not exist"
   gsutil -m cp "gs://gptjax_model_weights/msc_empathy_weights_slim_f16/hf_weights/pytorch_model.bin" empathy_model/.
 fi
 

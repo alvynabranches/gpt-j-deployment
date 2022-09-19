@@ -11,9 +11,8 @@ else
 fi
 
 if [ -f "marco_model/pytorch_model.bin" ]; then
-  echo "pytorch_model.bin exists"
+  cd .
 else
-  echo "pytorch_model.bin does not exist"
   gsutil -m cp "gs://gptjax_model_weights/msmarco_split_slim_f16/hf_weights/pytorch_model.bin" marco_model/.
 fi
 
