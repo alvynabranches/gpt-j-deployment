@@ -20,6 +20,8 @@ source qna_base.sh
 rm -rf qna_model
 echo "Completed qna_base.sh"
 
+
+
 source empathy.sh
 echo "Completed empathy.sh"
 
