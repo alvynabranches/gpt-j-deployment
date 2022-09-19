@@ -1,4 +1,7 @@
-FROM gcr.io/gpt-j-and-gpt-neox20b/marco:base
+ARG BASE_IMG=gcr.io/gpt-j-and-gpt-neox20b/marco:base
+FROM $BASE_IMG
+
+ENV DEBIAN_FRONTEND=noninteractive
 
 WORKDIR /app
 COPY marco.py main.py

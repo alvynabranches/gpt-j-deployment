@@ -1,4 +1,7 @@
-FROM gcr.io/gpt-j-and-gpt-neox20b/ltm:base
+ARG BASE_IMG=gcr.io/gpt-j-and-gpt-neox20b/ltm:base
+FROM $BASE_IMG
+
+ENV DEBIAN_FRONTEND=noninteractive
 
 WORKDIR /app
 COPY ltm.py main.py
