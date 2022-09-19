@@ -1,5 +1,5 @@
 git pull origin main
-sudo docker login
+# sudo docker login
 
 source base.sh
 
