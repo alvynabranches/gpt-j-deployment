@@ -1,4 +1,7 @@
-mkdir empathy_model
+if [ -d "empathy_model" ]; then
+else
+  mkdir empathy_model
+fi
 
 if [ -f "empathy_model/config.json" ]; then
   echo "config.json exists"

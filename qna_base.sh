@@ -1,4 +1,7 @@
-mkdir qna_model
+if [ -d "empathy_model" ]; then
+else
+  mkdir qna_model
+fi
 
 if [ -f "qna_model/config.json" ]; then
   echo "config.json exists"

@@ -1,4 +1,7 @@
-mkdir ltm_model
+if [ -d "ltm_model" ]; then
+else
+  mkdir ltm_model
+fi
 
 if [ -f "ltm_model/config.json" ]; then
   echo "config.json exists"

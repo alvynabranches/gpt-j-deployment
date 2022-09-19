@@ -1,4 +1,7 @@
-mkdir marco_model
+if [ -d "marco_model" ]; then
+else
+  mkdir marco_model
+fi
 
 if [ -f "marco_model/config.json" ]; then
   echo "config.json exists"
