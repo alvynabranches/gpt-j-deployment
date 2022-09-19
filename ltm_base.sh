@@ -5,9 +5,8 @@ else
 fi
 
 if [ -f "ltm_model/config.json" ]; then
-  echo "config.json exists"
+  cd .
 else
-  echo "config.json does not exist"
   gsutil -m cp "gs://gptjax_model_weights/msc_ltm_weights_slim_f16/hf_weights/config.json" ltm_model/.
 fi
 

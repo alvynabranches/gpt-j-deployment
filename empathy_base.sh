@@ -5,9 +5,8 @@ else
 fi
 
 if [ -f "empathy_model/config.json" ]; then
-  echo "config.json exists"
+  cd .
 else
-  echo "config.json does not exist"
   gsutil -m cp "gs://gptjax_model_weights/msc_empathy_weights_slim_f16/hf_weights/config.json" empathy_model/.
 fi
 
