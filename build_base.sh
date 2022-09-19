@@ -1,6 +1,8 @@
 git pull origin main
 # sudo docker login
 
+sudo gcloud auth configure-docker
+
 source base.sh
 echo "Completed base.sh"
 
