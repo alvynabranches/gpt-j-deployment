@@ -18,5 +18,5 @@ else
   gsutil -m cp "gs://gptjax_model_weights/qna_weights_slim_f16/hf_weights/pytorch_model.bin" qna_model/.
 fi
 
-sudo docker image build -t gcr.io/gpt-j-and-gpt-neox20b/qna:base -f qna.Dockerfile .
+sudo docker image build -t gcr.io/gpt-j-and-gpt-neox20b/qna:base -f qna_base.Dockerfile .
 sudo docker push gcr.io/gpt-j-and-gpt-neox20b/qna:base
