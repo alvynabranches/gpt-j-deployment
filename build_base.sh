@@ -18,6 +18,10 @@ source marco_base.sh
 rm -rf marco_model
 echo "Completed marco_base.sh\n\n\n"
 
+source marco_old_base.sh
+rm -rf marco_old_model
+echo "Completed marco_old_base.sh\n\n\n"
+
 source qna_base.sh
 rm -rf qna_model
 echo -e "Completed qna_base.sh\n\n\n"
@@ -32,6 +36,9 @@ echo -e "Completed ltm.sh\n\n\n"
 
 source marco.sh
 echo -e "Completed marco.sh\n\n\n"
+
+source marco_old.sh
+echo -e "Completed marco_old.sh\n\n\n"
 
 source qna.sh
 echo -e "Completed qna.sh\n\n\n"
