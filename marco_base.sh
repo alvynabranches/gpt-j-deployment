@@ -18,3 +18,4 @@ fi
 
 sudo docker image build -t gcr.io/gpt-j-and-gpt-neox20b/marco:base -f marco_base.Dockerfile .
 sudo docker push gcr.io/gpt-j-and-gpt-neox20b/marco:base
+rm -rf marco_model

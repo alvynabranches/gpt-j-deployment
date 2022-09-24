@@ -18,3 +18,4 @@ fi
 
 sudo docker image build -t gcr.io/gpt-j-and-gpt-neox20b/ltm:base -f ltm_base.Dockerfile .
 sudo docker push gcr.io/gpt-j-and-gpt-neox20b/ltm:base
+rm -rf ltm_model

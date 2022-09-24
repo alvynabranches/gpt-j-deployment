@@ -18,3 +18,4 @@ fi
 
 sudo docker image build -t gcr.io/gpt-j-and-gpt-neox20b/empathy:base -f empathy_base.Dockerfile .
 sudo docker push gcr.io/gpt-j-and-gpt-neox20b/empathy:base
+rm -rf empathy_model

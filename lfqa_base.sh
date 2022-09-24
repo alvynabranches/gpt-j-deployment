@@ -18,3 +18,4 @@ fi
 
 sudo docker image build -t gcr.io/gpt-j-and-gpt-neox20b/lfqa:base -f lfqa_base.Dockerfile .
 sudo docker push gcr.io/gpt-j-and-gpt-neox20b/lfqa:base
+rm -rf lfqa_model
