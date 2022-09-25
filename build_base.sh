@@ -7,27 +7,21 @@ source base.sh
 echo -e "Completed base.sh\n\n\n"
 
 source empathy_base.sh
-rm -rf empathy_model
 echo -e "Completed empathy_base.sh\n\n\n"
 
 source lfqa_base.sh
-rm -rf lfqa_model
 echo -e "Completed lfqa_base.sh\n\n\n"
 
 source ltm_base.sh
-rm -rf ltm_model
 echo -e "Completed ltm_base.sh\n\n\n"
 
 source marco_base.sh
-rm -rf marco_model
 echo "Completed marco_base.sh\n\n\n"
 
 source marco_old_base.sh
-rm -rf marco_old_model
 echo "Completed marco_old_base.sh\n\n\n"
 
 source qna_base.sh
-rm -rf qna_model
 echo -e "Completed qna_base.sh\n\n\n"
 
 
