@@ -6,11 +6,11 @@
 # source base.sh
 # echo "Done with base.sh"
 
-source ltm_base.sh
-echo "Done with ltm_base.sh"
+# source ltm_base.sh
+# echo "Done with ltm_base.sh"
 
-source ltm_latest.sh
-echo "Done with ltm_latest.sh"
+# source ltm_latest.sh
+# echo "Done with ltm_latest.sh"
 
 source empathy_base.sh
 echo "Done with empathy_base.sh"
