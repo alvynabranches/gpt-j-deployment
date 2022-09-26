@@ -1,6 +1,6 @@
 directory="ltm_model"
 bucket="gptjax_model_weights"
-folder="msc_ltm_weights_slim_f16"
+folder="reddit_msc_ltm_weights_slim_f16"
 
 if [ -d "${directory}" ]; then
   cd .

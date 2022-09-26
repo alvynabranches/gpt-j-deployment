@@ -1,6 +1,6 @@
 directory="marco_model"
 bucket="gptjax_model_weights"
-folder="msmarco_split_slim_f16"
+folder="reddit_msmarco_split_slim_f16"
 
 if [ -d "${directory}" ]; then
   cd .
