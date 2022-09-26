@@ -1,6 +1,6 @@
-directory="qna_model"
+directory="iag_model"
 bucket="gptjax_model_weights"
-folder="reddit_qna_weights_slim_f16"
+folder="reddit_IAG_slim_f16"
 
 if [ -d "${directory}" ]; then
   cd .
@@ -20,6 +20,6 @@ else
   gsutil -m cp "gs://${bucket}/${folder}/hf_weights/pytorch_model.bin" ${directory}/.
 fi
 
-sudo docker image build -t gcr.io/gpt-j-and-gpt-neox20b/qna:base -f qna_base.Dockerfile .
-sudo docker push gcr.io/gpt-j-and-gpt-neox20b/qna:base
+sudo docker image build -t gcr.io/gpt-j-and-gpt-neox20b/iag:base -f iag_base.Dockerfile .
+sudo docker push gcr.io/gpt-j-and-gpt-neox20b/iag:base
 rm -rf ${directory}

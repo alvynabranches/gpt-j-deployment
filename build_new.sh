@@ -24,14 +24,14 @@ echo "Done with iag_base.sh"
 # source iag_latest.sh
 echo "Done with iag_latest.sh"
 
-# source marco_base.sh
+source marco_base.sh
 echo "Done with marco_base.sh"
 
-# source marco_latest.sh
+source marco_latest.sh
 echo "Done with marco_latest.sh"
 
-# source qna_base.sh
+source qna_base.sh
 echo "Done with qna_base.sh"
 
-# source qna_latest.sh
+source qna_latest.sh
 echo "Done with qna_latest.sh"
