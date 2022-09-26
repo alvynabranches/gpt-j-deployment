@@ -13,12 +13,12 @@
 # echo "Done with ltm_latest.sh"
 # sudo docker rmi gcr.io/gpt-j-and-gpt-neox20b/ltm:base gcr.io/gpt-j-and-gpt-neox20b/ltm:latest
 
-source empathy_base.sh
-echo "Done with empathy_base.sh"
+# source empathy_base.sh
+# echo "Done with empathy_base.sh"
 
-source empathy_latest.sh
-echo "Done with empathy_latest.sh"
-sudo docker rmi gcr.io/gpt-j-and-gpt-neox20b/empathy:base gcr.io/gpt-j-and-gpt-neox20b/empathy:latest
+# source empathy_latest.sh
+# echo "Done with empathy_latest.sh"
+# sudo docker rmi gcr.io/gpt-j-and-gpt-neox20b/empathy:base gcr.io/gpt-j-and-gpt-neox20b/empathy:latest
 
 source iag_base.sh
 echo "Done with iag_base.sh"
