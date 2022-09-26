@@ -1,10 +1,10 @@
-source install.sh
-echo "Done with install.sh"
+# source install.sh
+# echo "Done with install.sh"
 
-sudo gcloud auth configure-docker
+# sudo gcloud auth configure-docker
 
-source base.sh
-echo "Done with base.sh"
+# source base.sh
+# echo "Done with base.sh"
 
 source ltm_base.sh
 echo "Done with ltm_base.sh"
