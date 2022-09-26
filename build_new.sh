@@ -18,10 +18,10 @@ echo "Done with empathy_base.sh"
 source empathy_latest.sh
 echo "Done with empathy_latest.sh"
 
-# source iag_base.sh
+source iag_base.sh
 echo "Done with iag_base.sh"
 
-# source iag_latest.sh
+source iag_latest.sh
 echo "Done with iag_latest.sh"
 
 source marco_base.sh
