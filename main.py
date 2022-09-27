@@ -79,7 +79,7 @@ async def generate(request: Request):
         print(f"Started inference at {datetime.now()} by {ip}")
         data = await request.json()
         if "prompt" not in data:
-            return Response({"status": "error", "message": "'prompt' not in json data"}, 400)
+            return Response(json.dumps({"status": "error", "message": "'prompt' not in json data"}), 400)
         num_beam = int(data["num_beam"]) if "num_beam" in data else None
         temperature = float(data["temperature"]) if "temperature" in data else None
         top_k = int(data["top_k"]) if "top_k" in data else None
