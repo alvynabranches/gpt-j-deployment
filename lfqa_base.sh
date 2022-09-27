@@ -1,6 +1,6 @@
 directory="lfqa_model"
 bucket="gptjax_model_weights"
-folder="lfqa_slim_f16"
+folder="reddit_lfqa_slim_f16"
 
 if [ -d "${directory}" ]; then
   cd .
