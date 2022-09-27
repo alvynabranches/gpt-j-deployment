@@ -1,0 +1,1 @@
+sudo docker container run -v $(pwd)/nginx.conf:/etc/nginx/nginx.conf -p 80:80 nginx
