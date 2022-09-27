@@ -5,7 +5,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 WORKDIR /app
 
 COPY requirements.txt requirements.txt
-RUN pip3 install --upgrade requirements.txt
+RUN pip3 install --upgrade -r requirements.txt
 COPY main.py main.py
 
 ENV MODEL_NAME=empathy
