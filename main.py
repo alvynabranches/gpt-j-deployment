@@ -52,7 +52,8 @@ async def inference(
     logger.info(f"Time taken {e-s} seconds")
     return tokenizer.batch_decode(gen_tokens)
 
-app = FastAPI(__name__)
+
+app = FastAPI()
 
 
 @app.route("/", methods=["GET"])
