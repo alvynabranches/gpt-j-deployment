@@ -1,3 +1,4 @@
 torch
-flask
+fastapi
+uvicorn
 transformers
