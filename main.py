@@ -59,7 +59,7 @@ app = FastAPI()
 @app.route("/", methods=["GET"])
 async def index():
     # logger.info(f"[{model_name}] Status checked at {datetime.now()}")
-    print(f"[{model_name}] Status checked at {datetime.now()}")
+    # print(f"[{model_name}] Status checked at {datetime.now()}")
     return {"status": "ok"}, 200
 
 
