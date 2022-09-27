@@ -14,4 +14,4 @@ ENV PORT 5000
 ENV DEBUG true
 EXPOSE 5000
 
-CMD [ "python3", "main.py" ]
+CMD [ "uvicorn", "main:app", "--host", ${HOST}, "--port", ${PORT}]
