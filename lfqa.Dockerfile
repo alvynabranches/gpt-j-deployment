@@ -6,7 +6,7 @@ WORKDIR /app
 
 COPY requirements.txt requirements.txt
 RUN pip3 install --upgrade -r requirements.txt
-COPY app.py main.py
+COPY main.py main.py
 
 ENV MODEL_NAME=lfqa
 ARG HOST 0.0.0.0
