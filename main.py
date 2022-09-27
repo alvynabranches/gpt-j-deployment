@@ -56,21 +56,21 @@ async def inference(
 app = FastAPI()
 
 
-@app.route("/", methods=["GET"])
+@app.get("/", methods=["GET"])
 async def index():
     # logger.info(f"[{model_name}] Status checked at {datetime.now()}")
     # print(f"[{model_name}] Status checked at {datetime.now()}")
     return {"status": "ok"}, 200
 
 
-@app.route("/{model_name}", methods=["GET"])
+@app.get("/{model_name}", methods=["GET"])
 async def status():
     # logger.info(f"Status of {model_name} checked at {datetime.now()}")
     print(f"Status of {model_name} checked at {datetime.now()}")
     return {"status": "ok"}, 200
 
 
-@app.route(f"/{model_name}/generate", methods=["POST"])
+@app.post(f"/{model_name}/generate", methods=["POST"])
 async def generate(request: Request):
     ip = request.client.host
     try:
