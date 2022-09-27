@@ -61,14 +61,14 @@ app = FastAPI()
 async def index():
     logger.info(f"[{model_name}] Status checked at {datetime.now()}")
     print(f"[{model_name}] Status checked at {datetime.now()}")
-    return Response(json.dumps({"status": "ok"}), 200)
+    return Response(json.dumps({"status": "ok"}), 200, headers={"Content-Type": "application/json"})
 
 
 @app.get("/{model_name}")
 async def status():
     logger.info(f"Status of {model_name} checked at {datetime.now()}")
     print(f"Status of {model_name} checked at {datetime.now()}")
-    return Response(json.dumps({"status": "ok"}), 200)
+    return Response(json.dumps({"status": "ok"}), 200, headers={"Content-Type": "application/json"})
 
 
 @app.post(f"/{model_name}/generate")
@@ -79,7 +79,7 @@ async def generate(request: Request):
         print(f"Started inference at {datetime.now()} by {ip}")
         data = await request.json()
         if "prompt" not in data:
-            return Response(json.dumps({"status": "error", "message": "'prompt' not in json data"}), 400)
+            return Response(json.dumps({"status": "error", "message": "'prompt' not in json data"}), 400, headers={"Content-Type": "application/json"})
         num_beam = int(data["num_beam"]) if "num_beam" in data else None
         temperature = float(data["temperature"]) if "temperature" in data else None
         top_k = int(data["top_k"]) if "top_k" in data else None
@@ -91,9 +91,9 @@ async def generate(request: Request):
         )
         logger.info(f"Ended inference at {datetime.now()} by {ip}")
         print(f"Ended inference at {datetime.now()} by {ip}")
-        return Response(json.dumps({"status": "ok", "message": messages[0]}), 201)
+        return Response(json.dumps({"status": "ok", "message": messages[0]}), 201, headers={"Content-Type": "application/json"})
     except Exception as e:
-        return Response(json.dumps({"status": "error", "message": str(e)}), 500)
+        return Response(json.dumps({"status": "error", "message": str(e)}), 500, headers={"Content-Type": "application/json"})
 
 
 if __name__ == "__main__":
