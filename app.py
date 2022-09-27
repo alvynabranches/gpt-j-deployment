@@ -6,7 +6,7 @@ from fastapi import FastAPI, Request, Response, HTTPException
 from datetime import datetime
 
 app = FastAPI()
-model_name = os.environ("MODEL_NAME")
+model_name = os.environ.get("MODEL_NAME")
 
 @app.get("/")
 async def index():
