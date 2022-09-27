@@ -9,6 +9,9 @@ echo -e "Completed base.sh\n\n\n"
 source empathy_base.sh
 echo -e "Completed empathy_base.sh\n\n\n"
 
+source iag_base.sh
+echo -e "Completed iag_base.sh\n\n\n"
+
 source lfqa_base.sh
 echo -e "Completed lfqa_base.sh\n\n\n"
 
@@ -28,6 +31,9 @@ echo -e "Completed qna_base.sh\n\n\n"
 
 source empathy_latest.sh
 echo -e "Completed empathy_latest.sh\n\n\n"
+
+source iag_latest.sh
+echo "Completed iag_latest.sh\n\n\n"
 
 source lfqa_latest.sh
 echo -e "Completed lfqa_latest.sh\n\n\n"

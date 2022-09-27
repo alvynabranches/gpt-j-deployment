@@ -9,9 +9,6 @@ RUN pip3 install --upgrade -r requirements.txt
 COPY main.py main.py
 
 ENV MODEL_NAME=empathy
-ENV HOST 0.0.0.0
-ENV PORT 5000
-ENV DEBUG true
 EXPOSE 5000
 
-CMD [ "python3", "main.py" ]
+CMD [ "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "5000"]
