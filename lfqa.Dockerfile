@@ -9,9 +9,9 @@ RUN pip3 install --upgrade -r requirements.txt
 COPY main.py main.py
 
 ENV MODEL_NAME=lfqa
-ENV HOST 0.0.0.0
-ENV PORT 5000
+ARG HOST 0.0.0.0
+ARG PORT 5000
 ENV DEBUG true
 EXPOSE 5000
 
-CMD [ "uvicorn", "main:app", "--host", "${HOST}", "--port", 5000]
+CMD [ "uvicorn", "main:app", "--host", "${HOST}", "--port", "${PORT}"]
