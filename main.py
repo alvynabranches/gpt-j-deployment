@@ -7,9 +7,9 @@ from time import perf_counter
 from fastapi import FastAPI, Request
 from transformers import GPTJForCausalLM, AutoTokenizer
 
-logger = logging.getLogger(__name__)
+# logger = logging.getLogger(__name__)
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-logger.info(f"Using device {device}")
+# logger.info(f"Using device {device}")
 print(f"Using device {device}")
 [print(torch.cuda.get_device_properties(i)) for i in range(torch.cuda.device_count())] if torch.cuda.is_available() else print('cpu')
 
@@ -21,13 +21,13 @@ tokenizer_name_or_path = "EleutherAI/gpt-j-6B"
 s = perf_counter()
 model = GPTJForCausalLM.from_pretrained(model_name_or_path).to(device)
 e = perf_counter()
-logger.info(f"Model loading completed successfully! Time taken: {e-s:.3f} seconds")
+# logger.info(f"Model loading completed successfully! Time taken: {e-s:.3f} seconds")
 print(f"Model loading completed successfully! Time taken: {e-s:.3f} seconds")
 
 s = perf_counter()
 tokenizer = AutoTokenizer.from_pretrained(tokenizer_name_or_path)
 e  = perf_counter()
-logger.info(f"Tokenizer loading completed successfully! Time taken: {e-s:.3f} seconds")
+# logger.info(f"Tokenizer loading completed successfully! Time taken: {e-s:.3f} seconds")
 print(f"Tokenizer loading completed successfully! Time taken: {e-s:.3f} seconds")
 
 
@@ -49,7 +49,7 @@ async def inference(
     )
     e = perf_counter()
     print(f"Time taken {e-s} seconds")
-    logger.info(f"Time taken {e-s} seconds")
+    # logger.info(f"Time taken {e-s} seconds")
     return tokenizer.batch_decode(gen_tokens)
 
 
@@ -58,14 +58,14 @@ app = FastAPI()
 
 @app.route("/", methods=["GET"])
 async def index():
-    logger.info(f"[{model_name}] Status checked at {datetime.now()}")
+    # logger.info(f"[{model_name}] Status checked at {datetime.now()}")
     print(f"[{model_name}] Status checked at {datetime.now()}")
     return {"status": "ok"}, 200
 
 
 @app.route("/{model_name}", methods=["GET"])
 async def status():
-    logger.info(f"Status of {model_name} checked at {datetime.now()}")
+    # logger.info(f"Status of {model_name} checked at {datetime.now()}")
     print(f"Status of {model_name} checked at {datetime.now()}")
     return {"status": "ok"}, 200
 
@@ -74,7 +74,7 @@ async def status():
 async def generate(request: Request):
     ip = request.client.host
     try:
-        logger.info(f"Started inference at {datetime.now()} by {ip}")
+        # logger.info(f"Started inference at {datetime.now()} by {ip}")
         print(f"Started inference at {datetime.now()} by {ip}")
         data = await request.json()
         if "prompt" not in data:
@@ -88,7 +88,7 @@ async def generate(request: Request):
             str(data["prompt"]), model, tokenizer, max_length=max_length, 
             temperature=temperature, top_k=top_k, top_p=top_p, num_beam=num_beam
         )
-        logger.info(f"Ended inference at {datetime.now()} by {ip}")
+        # logger.info(f"Ended inference at {datetime.now()} by {ip}")
         print(f"Ended inference at {datetime.now()} by {ip}")
         return {"status": "ok", "message": messages[0]}, 201
     except Exception as e:
