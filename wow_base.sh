@@ -1,6 +1,6 @@
 directory="wow_model"
 bucket="gptjax_model_weights"
-folder="reddit_msc_wow_weights_slim_f16"
+folder="reddit_wow_slim_f16"
 
 if [ -d "${directory}" ]; then
   cd .
