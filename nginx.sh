@@ -1,1 +1,1 @@
-sudo docker container run -v $(pwd)/nginx.conf:/etc/nginx/nginx.conf -p 80:80 --restart=always nginx
+sudo docker container run --restart=always -v $(pwd)/nginx.conf:/etc/nginx/nginx.conf -p 80:80 -d nginx
