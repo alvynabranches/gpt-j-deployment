@@ -2,21 +2,15 @@ directory="iag_model"
 bucket="gptjax_model_weights"
 folder="reddit_IAG_slim_f16"
 
-if [ -d "${directory}" ]; then
-  cd .
-else
+if [ ! -d "${directory}" ]; then
   mkdir ${directory}
 fi
 
-if [ -f "${directory}/config.json" ]; then
-  cd .
-else
+if [ ! -f "${directory}/config.json" ]; then
   gsutil -m cp "gs://${bucket}/${folder}/hf_weights/config.json" ${directory}/.
 fi
 
-if [ -f "${directory}/pytorch_model.bin" ]; then
-  cd .
-else
+if [ ! -f "${directory}/pytorch_model.bin" ]; then
   gsutil -m cp "gs://${bucket}/${folder}/hf_weights/pytorch_model.bin" ${directory}/.
 fi
 
