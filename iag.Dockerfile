@@ -13,4 +13,3 @@ ENV MODEL_NAME=iag
 EXPOSE 5000
 
 CMD [ "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "5000" ]
-# CMD [ "python3", "main.py" ]
