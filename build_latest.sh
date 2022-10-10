@@ -5,6 +5,9 @@ sudo gcloud auth configure-docker
 source empathy_latest.sh
 echo -e "Completed empathy_latest.sh\n\n\n"
 
+source iag_latest.sh
+echo -e "Completed iag_latest.sh\n\n\n"
+
 source lfqa_latest.sh
 echo -e "Completed lfqa_latest.sh\n\n\n"
 
@@ -16,3 +19,6 @@ echo -e "Completed marco_latest.sh\n\n\n"
 
 source qna_latest.sh
 echo -e "Completed qna_latest.sh\n\n\n"
+
+source wow_latest.sh
+echo -e "Completed wow_latest.sh\n\n\n"
