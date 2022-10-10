@@ -2,9 +2,6 @@ git pull origin main
 
 sudo gcloud auth configure-docker
 
-source base.sh
-echo -e "Completed base.sh\n\n\n"
-
 source empathy_latest.sh
 echo -e "Completed empathy_latest.sh\n\n\n"
 
