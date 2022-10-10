@@ -9,7 +9,8 @@ COPY requirements.txt requirements.txt
 RUN pip3 install --upgrade -r requirements.txt
 COPY main.py main.py
 
-ENV MODEL_NAME=empathy
+ARG MODEL_NAME=empathy
+ENV MODEL_NAME=${MODEL_NAME}
 EXPOSE 5000
 
 CMD [ "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "5000" ]
