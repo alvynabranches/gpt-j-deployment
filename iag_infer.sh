@@ -16,5 +16,4 @@ fi
 
 sudo docker pull gcr.io/gpt-j-and-gpt-neox20b/iag:latest
 sudo docker container run --name infer --restart always -d -p 5000:5000  -v $(pwd)/iag_model/:/app/model/gcr.io/gpt-j-and-gpt-neox20b/iag:latest
-sudo docker container logs --tail 10 infer
-watch -n 1 sudo docker container logs --tail 10 infer
+watch -n 1 sudo docker container logs --tail 25 infer
