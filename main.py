@@ -2,7 +2,6 @@ import os
 import json
 import torch
 import logging
-import uvicorn
 from datetime import datetime
 from time import perf_counter
 from fastapi import FastAPI, Request, Response
@@ -15,7 +14,6 @@ print(f"Using device {device}")
 [print(torch.cuda.get_device_properties(i)) for i in range(torch.cuda.device_count())] if torch.cuda.is_available() else print('cpu')
 
 model_name = os.environ.get("MODEL_NAME")
-model_name_or_path = "EleutherAI/gpt-j-6B"
 model_name_or_path = "./model/"
 tokenizer_name_or_path = "EleutherAI/gpt-j-6B"
 
