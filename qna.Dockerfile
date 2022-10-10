@@ -1,8 +1,9 @@
-FROM gcr.io/gpt-j-and-gpt-neox20b/qna:base
+FROM gcr.io/gpt-j-and-gpt-neox20b/jax:base
 
 ENV DEBIAN_FRONTEND=noninteractive
 
 WORKDIR /app
+VOLUME /app/model/
 
 COPY requirements.txt requirements.txt
 RUN pip3 install --upgrade -r requirements.txt
