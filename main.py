@@ -4,8 +4,18 @@ import torch
 import logging
 from datetime import datetime
 from time import perf_counter
+from typing import Optional
+from pydantic import BaseModel
 from fastapi import FastAPI, Request, Response
 from transformers import GPTJForCausalLM, AutoTokenizer
+
+class Input(BaseModel):
+    prompt: str
+    num_beam: Optional[int] = None
+    temperature: Optional[float] = None
+    top_p: Optional[float] = None
+    top_k: Optional[int] = None
+    max_length: Optional[int] = 512
 
 logger = logging.getLogger(__name__)
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -70,22 +80,15 @@ async def status():
 
 
 @app.post(f"/{model_name}/generate")
-async def generate(request: Request):
+async def generate(data: Input, request: Request):
     ip = request.client.host
     try:
         logger.info(f"Started inference at {datetime.now()} by {ip}")
         print(f"Started inference at {datetime.now()} by {ip}")
-        data = await request.json()
-        if "prompt" not in data:
-            return Response(json.dumps({"status": "error", "message": "'prompt' not in json data"}), 400, headers={"Content-Type": "application/json"})
-        num_beam = int(data["num_beam"]) if "num_beam" in data else None
-        temperature = float(data["temperature"]) if "temperature" in data else None
-        top_k = int(data["top_k"]) if "top_k" in data else None
-        top_p = float(data["top_p"]) if "top_p" in data else None
-        max_length = int(data["max_length"]) if "max_length" in data else 512
         messages = await inference(
-            str(data["prompt"]), model, tokenizer, max_length=max_length, 
-            temperature=temperature, top_k=top_k, top_p=top_p, num_beam=num_beam
+            str(data.prompt), model, tokenizer, max_length=data.max_length, 
+            temperature=data.temperature, top_k=data.top_k, top_p=data.top_p, 
+            num_beam=data.num_beam
         )
         logger.info(f"Ended inference at {datetime.now()} by {ip}")
         print(f"Ended inference at {datetime.now()} by {ip}")
